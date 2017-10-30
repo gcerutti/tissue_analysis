@@ -17,16 +17,16 @@
 __license__ = "Cecill-C"
 
 import scipy.ndimage as nd, numpy as np
-from openalea.cellcomplex.property_topomesh.utils.image_tools import image_to_vtk_cell_polydata, vtk_polydata_to_cell_triangular_meshes
-from openalea.cellcomplex.triangular_mesh import TriangularMesh
+from vplants.cellcomplex.property_topomesh.utils.image_tools import image_to_vtk_cell_polydata, vtk_polydata_to_cell_triangular_meshes
+from vplants.cellcomplex.triangular_mesh import TriangularMesh
 
-from openalea.container import array_dict
+from vplants.container import array_dict
 
 from vplants.tissue_analysis.spatial_image_analysis import fractional_anisotropy
 
-from openalea.image.spatial_image import SpatialImage
-from vplants.morpheme.vt_exec.trsf import apply_trsf, create_trsf
-from vplants.morpheme.vt_exec.trsf import BalTransformation
+from timagetk.components import SpatialImage
+from timagetk.algorithms.trsf import apply_trsf, create_trsf
+from timagetk.algorithms.trsf import BalTransformation
 
 from copy import copy, deepcopy
 from time import time

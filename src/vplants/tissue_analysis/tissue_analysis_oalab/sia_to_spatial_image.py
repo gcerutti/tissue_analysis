@@ -17,9 +17,9 @@
 __license__ = "Cecill-C"
 
 import scipy.ndimage as nd, numpy as np
-from openalea.image.spatial_image import SpatialImage
+from timagetk.components import SpatialImage
 
-from openalea.container import array_dict
+from vplants.container import array_dict
 
 from copy import copy, deepcopy
 

@@ -24,7 +24,7 @@ import numpy as np, scipy.ndimage as nd, cPickle as pickle, copy as cp
 from numpy.linalg import svd, norm
 from os.path import exists, splitext, split
 
-from openalea.image.serial.basics import SpatialImage, imsave
+from timagetk.components import SpatialImage, imsave
 
 try:
     from openalea.plantgl.algo import r_neighborhood, principal_curvatures

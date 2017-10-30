@@ -30,7 +30,7 @@ from openalea.core.service.ipython import interpreter as get_interpreter
 from openalea.oalab.service.drag_and_drop import add_drop_callback
 from openalea.oalab.widget.world import WorldModel
 
-from openalea.container import array_dict
+from vplants.container import array_dict
 
 from vplants.tissue_analysis.spatial_image_analysis import SpatialImageAnalysis3D
 

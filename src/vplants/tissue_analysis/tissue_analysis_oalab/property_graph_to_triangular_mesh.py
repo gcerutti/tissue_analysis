@@ -18,8 +18,8 @@ __license__ = "Cecill-C"
 
 import scipy.ndimage as nd, numpy as np
 
-from openalea.cellcomplex.triangular_mesh import TriangularMesh
-from openalea.container import array_dict, PropertyGraph, TemporalPropertyGraph
+from vplants.cellcomplex.triangular_mesh import TriangularMesh
+from vplants.container import array_dict, PropertyGraph, TemporalPropertyGraph
 
 
 from copy import copy, deepcopy

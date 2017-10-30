@@ -22,8 +22,8 @@ import scipy.ndimage as nd
 from scipy.cluster.vq import vq
 
 from temporal_graph_from_image import SpatialImage, graph_from_image
-from openalea.container import array_dict
-from openalea.cellcomplex.triangular_mesh import TriangularMesh
+from vplants.container import array_dict
+from vplants.cellcomplex.triangular_mesh import TriangularMesh
 
 from copy import deepcopy
 
@@ -158,9 +158,9 @@ class PropertySpatialImage(object):
                     cell_centers = self.image_property('barycenter')
                     L1_cells = self.labels[self.image_property('layer').values()==1]
                     
-                    from openalea.cellcomplex.property_topomesh.utils.implicit_surfaces import implicit_surface_topomesh
-                    from openalea.cellcomplex.property_topomesh.property_topomesh_analysis import compute_topomesh_property, compute_topomesh_vertex_property_from_faces
-                    from openalea.cellcomplex.property_topomesh.property_topomesh_optimization import property_topomesh_vertices_deformation, topomesh_triangle_split
+                    from vplants.cellcomplex.property_topomesh.utils.implicit_surfaces import implicit_surface_topomesh
+                    from vplants.cellcomplex.property_topomesh.property_topomesh_analysis import compute_topomesh_property, compute_topomesh_vertex_property_from_faces
+                    from vplants.cellcomplex.property_topomesh.property_topomesh_optimization import property_topomesh_vertices_deformation, topomesh_triangle_split
 
                     sub_binary_image = (self._image!=self.background).astype(float)[::sub_factor,::sub_factor,::sub_factor]
                     surface_topomesh = implicit_surface_topomesh(sub_binary_image,np.array(sub_binary_image.shape),sub_factor*np.array(self._image.voxelsize),center=False)
@@ -221,7 +221,7 @@ class PropertySpatialImage(object):
             return SpatialImage(property_image.astype(dtype), voxelsize=self.image.voxelsize)
 
     def compute_cell_meshes(self, sub_factor=4):
-        from openalea.cellcomplex.property_topomesh.utils.image_tools import image_to_vtk_cell_polydata, vtk_polydata_to_cell_triangular_meshes, img_resize
+        from vplants.cellcomplex.property_topomesh.utils.image_tools import image_to_vtk_cell_polydata, vtk_polydata_to_cell_triangular_meshes, img_resize
         # from timagetk.components import SpatialImage as TissueImage
         # segmented_img = img_resize(TissueImage(deepcopy(self.image),voxelsize=self.image.voxelsize), sub_factor=3)
         segmented_img = SpatialImage(deepcopy(self.image)[::sub_factor,::sub_factor,::sub_factor],voxelsize=tuple([s*sub_factor for s in self.image.voxelsize]))
@@ -251,7 +251,7 @@ def property_spatial_image_to_dataframe(image):
         return image_df
 
 def property_spatial_image_to_triangular_mesh(image, property_name=None, labels=None, coef=1):
-    from openalea.cellcomplex.property_topomesh.utils.image_tools import composed_triangular_mesh
+    from vplants.cellcomplex.property_topomesh.utils.image_tools import composed_triangular_mesh
 
     cell_triangular_meshes = deepcopy(image.cell_meshes)
     img_labels = cell_triangular_meshes.keys()

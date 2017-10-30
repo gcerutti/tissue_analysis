@@ -19,10 +19,10 @@ import time, warnings, math, gzip
 import numpy as np, copy as cp, cPickle as pickle
 from os.path import exists
 
-from openalea.image.serial.basics import SpatialImage, imread, imsave
-from openalea.image.spatial_image import is2D
+from timagetk.components import SpatialImage, imread, imsave
+# from openalea.image.spatial_image import is2D
 
-from openalea.container import PropertyGraph
+from vplants.container import PropertyGraph
 
 from vplants.tissue_analysis.spatial_image_analysis import SpatialImageAnalysis, AbstractSpatialImageAnalysis, DICT, find_wall_median_voxel, sort_boundingbox, projection_matrix
 
@@ -272,7 +272,8 @@ def graph_from_image(image,
     else:
         real_image = image
 
-    if is2D(real_image):
+    # if is2D(real_image):
+    if (real_image.ndim==2) or (real_image.shape[2]==1):
         if spatio_temporal_properties == None:
             spatio_temporal_properties = spatio_temporal_properties2D
         return graph_from_image2D(image, labels, background, spatio_temporal_properties,
@@ -307,7 +308,7 @@ def graph_from_image(image,
 #     """
 #     Masked function used when 'vids' refer to a layer.
 #     """
-#     from openalea.container.interface.property_graph import PropertyError
+#     from vplants.container.interface.property_graph import PropertyError
 #     try:
 #         vids = [k for k,v in graph.vertex_property(vids).iteritems() if v]
 #     except PropertyError as pe:
